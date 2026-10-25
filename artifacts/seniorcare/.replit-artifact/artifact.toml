@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "SeniorCare"
+description = "A bilingual, accessible mobile app that helps seniors and families request trusted home nursing care, manage medications, and reach emergency support with confidence."
+version = "1.0.0"
+id = "artifacts/seniorcare"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 26239
+
+[services.development]
+run = "pnpm --filter @workspace/seniorcare run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/seniorcare", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/seniorcare", "run", "serve" ]
+
+[services.env]
+PORT = "26239"
+BASE_PATH = "/"
